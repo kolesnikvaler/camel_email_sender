@@ -13,7 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
+import java.util.Collections;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -42,7 +42,7 @@ class VacancyControllerTest {
         vacancy.setRequiredExperience("3 года");
 
         VacancyList vacancyList = new VacancyList();
-        vacancyList.setVacancies(Arrays.asList(vacancy));
+        vacancyList.setVacancies(Collections.singletonList(vacancy));
 
         mockMvc.perform(post("/vacancy")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -66,7 +66,7 @@ class VacancyControllerTest {
         vacancyFilterDto.setCity("Москва");
 
         when(vacancyRepository.findByFilters("Java", "Java Developer", "Москва"))
-                .thenReturn(Arrays.asList(vacancy));
+                .thenReturn(Collections.singletonList(vacancy));
 
         mockMvc.perform(get("/vacancy")
                         .contentType(MediaType.APPLICATION_JSON)

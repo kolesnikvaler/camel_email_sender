@@ -11,11 +11,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(SubscriberController.class)
@@ -25,7 +23,7 @@ class SubscriberControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private SubscriberRepository subscriberRepository;
+    private SubscriberRepository subscriberRepository; // post("/subscriber") использует этот bean
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -39,7 +37,7 @@ class SubscriberControllerTest {
         sub.setInterestedPosition("Java Developer");
 
         SubscriberList subscriberList = new SubscriberList();
-        subscriberList.setSubscribers(Arrays.asList(sub));
+        subscriberList.setSubscribers(Collections.singletonList(sub));
 
         mockMvc.perform(post("/subscriber")
                         .contentType(MediaType.APPLICATION_JSON)
