@@ -20,12 +20,22 @@ public class VacancyController {
         this.vacancyRepository = vacancyRepository;
     }
 
+    /**
+     * Создаёт вакансии из полученного списка
+     * @param vacancyList список вакансий на публикацию
+     * @return ничего
+     */
     @PostMapping("/vacancy")
     public ResponseEntity<Void> createVacancy(@RequestBody VacancyList vacancyList) {
         vacancyRepository.saveAll(vacancyList.getVacancies());
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * Поиск вакансий по фильтру
+     * @param filter фильтр по вакансиям
+     * @return список найденных по фильтру вакансий
+     */
     @GetMapping("/vacancy")
     public List<Vacancy> getVacancies(@RequestBody VacancyFilterDto filter) {
         return vacancyRepository.findByFilters(filter.getName(), filter.getPosition(), filter.getCity());

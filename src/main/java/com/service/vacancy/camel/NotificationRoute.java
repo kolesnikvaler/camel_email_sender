@@ -3,6 +3,9 @@ package com.service.vacancy.camel;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
+/**
+ * Настройка маршрутизатора
+ */
 @Component
 public class NotificationRoute extends RouteBuilder {
 

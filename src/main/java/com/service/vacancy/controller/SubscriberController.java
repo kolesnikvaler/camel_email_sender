@@ -16,6 +16,10 @@ public class SubscriberController {
         this.subscriberRepository = subscriberRepository;
     }
 
+    /**
+     * Добавляет подписчиков на вакансии (по полю interestedPosition)
+     * @param subscribers список подписчиков
+     */
     @PostMapping("/subscriber")
     public ResponseEntity<Void> addSubscriber(@RequestBody SubscriberList subscribers) {
         subscriberRepository.saveAll(subscribers.getSubscribers());

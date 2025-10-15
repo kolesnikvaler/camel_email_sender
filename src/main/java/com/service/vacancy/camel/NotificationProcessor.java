@@ -17,6 +17,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Процесс отправки писем о новых вакансиях к подписчика
+ */
 @Component
 public class NotificationProcessor implements Processor {
 
@@ -32,6 +35,9 @@ public class NotificationProcessor implements Processor {
         this.properties = properties;
     }
 
+    /**
+     * Процесс отправки
+     */
     @Override
     public void process(Exchange exchange) {
 
@@ -65,6 +71,12 @@ public class NotificationProcessor implements Processor {
         }
     }
 
+    /**
+     * Подготовка текста письма к отправке
+     * @param subscriber сущность подписчика
+     * @param vacancy сущность вакансии
+     * @return текст письма
+     */
     private String buildEmailBody(Subscriber subscriber, Vacancy vacancy) {
         return "Здравствуйте, " + subscriber.getFullName() + "!\n" +
                 "Информируем вас о новой вакансии на должность «" + vacancy.getPosition() + "».\n" +
