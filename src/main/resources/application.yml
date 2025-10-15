@@ -1,0 +1,31 @@
+spring:
+  config:
+    import: optional:file:.env[.properties]
+
+  application:
+    name: vacancy
+
+  profiles:
+    active: @activatedProperties@
+
+  datasource:
+    url: jdbc:h2:mem:vacancydb
+    driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+  h2:
+    console:
+      enabled: true
+
+mail:
+  from: ${MAIL_FROM}
+  smtp:
+    host: smtp.mail.ru
+    port: 465
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    ssl: true
+    auth: true
