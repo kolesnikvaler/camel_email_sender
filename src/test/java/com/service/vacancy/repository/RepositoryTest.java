@@ -11,6 +11,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+/**
+ * Тест базы (сохранение, извлечение, проверка на соответствие)
+ */
 @DataJpaTest
 class RepositoryTest {
 
