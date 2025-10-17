@@ -2,6 +2,7 @@
 
 ### Создайте .env в корне проекта и добавьте переменные окружения:
 ```env
+# Ваша почта и сгенерированный вами внешний ключ
 MAIL_FROM=example@mail.ru
 MAIL_USERNAME=example@mail.ru
 MAIL_PASSWORD=${ваш внешний пароль почты}
